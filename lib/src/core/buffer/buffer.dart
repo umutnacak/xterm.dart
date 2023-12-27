@@ -439,11 +439,7 @@ class Buffer {
     if (newHeight > oldHeight) {
       // Grow larger
       for (var i = 0; i < newHeight - oldHeight; i++) {
-        if (newHeight > lines.length) {
-          lines.push(_newEmptyLine(newWidth));
-        } else {
-          _cursorY++;
-        }
+        lines.push(_newEmptyLine(newWidth));
       }
     } else {
       // Shrink smaller
