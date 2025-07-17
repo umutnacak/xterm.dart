@@ -159,7 +159,12 @@ class CustomTextEditState extends State<CustomTextEdit> with TextInputClient {
     if (hasInputConnection) {
       _connection!.show();
     } else {
+      final int? viewId = View.maybeOf(context)?.viewId;
+      if (viewId == null) {
+        throw Exception('Cannot open input connection without a valid viewId.');
+      }
       final config = TextInputConfiguration(
+        viewId: viewId,
         inputType: widget.inputType,
         inputAction: widget.inputAction,
         keyboardAppearance: widget.keyboardAppearance,
